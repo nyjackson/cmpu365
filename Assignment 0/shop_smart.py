@@ -30,12 +30,17 @@ def shop_smart(order_list, fruit_shops):
 
     # *** YOUR CODE HERE ***
     best_shop = ""
-    shop1_total = 0
-    shop2_total = 0
-        
-    if(shop1_total > shop2_total) best_shop = fruit_shops[0]
-    else best_shop = fruit_shops[1]
-
+    cheapest_total = 1000000
+    shop_totals = {
+    }
+    
+    for shop in fruit_shops:
+        shop_totals[shop] = shop.get_price_of_order(order_list)
+    for shop,total in shop_totals.items():
+        if total < cheapest_total:
+            cheapest_total = total
+            best_shop = shop
+    
     return best_shop
 
 
